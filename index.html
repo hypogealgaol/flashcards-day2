@@ -8,14 +8,12 @@
     </head>
     <body ng-app="flashCards" ng-controller="MainController">
         <!-- butons go here --> 
-        <button class="category-button" ng-click="getCategoryCards('MongoDB')">MongoDB</button>
-        <button class="category-button" ng-click="getCategoryCards('Express')">Express</button>
-        <button class="category-button" ng-click="getCategoryCards('Angular')">Angular</button>
-        <button class="category-button" ng-click="getCategoryCards('Node')">Node</button>
+         <button ng-repeat="category in categories" class='category-button' ng-class ="activeCategory(category) ? 'active' : 'category-button'" ng-click ="getCategoryCards(category)">{{category}}</button> <!-- applying to every button --> 
     	<div
     		ng-repeat="flashCard in flashCards | orderBy : 'question'"
     		class="flash-card">
     	    <h1>{{ flashCard.question | uppercase }}</h1>
+            <h3 ng-click = "resetCategory()">RESET CATEGORY</h3>
     	    <ul class="flash-card-answers">
     	    	<li
     	    		ng-repeat="answer in flashCard.answers"

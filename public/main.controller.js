@@ -29,7 +29,11 @@ app.controller('MainController', function ($scope, FlashCardsFactory) { //factor
 		.then(function(data) { //promise 
 			$scope.flashCards = data; //send the data filtered by category from our factory. 
 		})
+	}
 
-
+	$scope.resetCategory = function() {
+		FlashCardsFactory.getFlashCards().then(function(data) {
+			$scope.flashCards = data; 
+		})
 	}
 });
