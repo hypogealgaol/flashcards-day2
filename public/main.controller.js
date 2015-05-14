@@ -25,6 +25,10 @@ app.controller('MainController', function ($scope, FlashCardsFactory) { //factor
 	}
 
 	$scope.getCategoryCards = function(category) {
+		FlashCardsFactory.getFlashCards(category)
+		.then(function(data) { //promise 
+			$scope.flashCards = data; //send the data filtered by category from our factory. 
+		})
 
 
 	}
