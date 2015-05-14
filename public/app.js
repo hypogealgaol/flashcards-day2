@@ -29,18 +29,20 @@ app.value('whateverName', [
 
 app.controller('MainController', function($scope, FlashCardsFactory) {
 
-    FlashCardsFactory.getFlashCards(); 
-
-    console.log(FlashCardsFactory); 
+   
 }); 
 
 //we are making factory with ajax request
-
+//FACTORY
 app.factory('FlashCardsFactory', function($http) {
 
     return {
         getFlashCards: function() {
-            return $http.get('/cards').then(function (response) {
+            return $http.get('/cards')
+
+
+
+            .then(function (response) {
                 return response.data; //then in this case is a promise, then is callback to get data
             }); 
         }
