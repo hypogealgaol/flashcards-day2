@@ -32,6 +32,22 @@ app.controller('MainController', function($scope, FlashCardsFactory) {
    
 }); 
 
+app.controller('StatsController', function($scope, ScoreFactory) {
+    $scope.scores = ScoreFactory; //inject score factory object under score
+
+}); 
+
+
+app.factory('ScoreFactory', function() {
+    return {
+        //inits
+        correct: 0,
+        incorrect: 0
+    }; 
+
+}); 
+
+
 //we are making factory with ajax request
 //FACTORY
 app.factory('FlashCardsFactory', function($http) {
