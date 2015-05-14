@@ -1,5 +1,12 @@
 app.controller('MainController', function ($scope, FlashCardsFactory) { //factory injection
 
+	$scope.categories = [
+		'MongoDB',
+	    'Express',
+	    'Angular',
+	    'Node'
+	]; 
+
 	 FlashCardsFactory.getFlashCards().then(function(data) {
 	 	//get response data as JSON, getflashCards gives an array
 	 	$scope.flashCards = data;  ///simply get the flashcards as data
@@ -15,5 +22,10 @@ app.controller('MainController', function ($scope, FlashCardsFactory) { //factor
 			flashCard.answered = true;
 			flashCard.answeredCorrectly = answer.correct;
 		}
+	}
+
+	$scope.getCategoryCards = function(category) {
+
+
 	}
 });

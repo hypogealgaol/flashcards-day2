@@ -37,12 +37,15 @@ app.controller('MainController', function($scope, FlashCardsFactory) {
 app.factory('FlashCardsFactory', function($http) {
 
     return {
-        getFlashCards: function() {
-            return $http.get('/cards')
+        getFlashCards: function(category) {
 
-
-
-            .then(function (response) {
+            var queryParams = {}; 
+            if(category) { //if there is an argument, add it to query params
+                queryParams.category = category; 
+            }
+            return $http.get('/cards', {
+                params: queryParams
+            }).then(function (response) {
                 return response.data; //then in this case is a promise, then is callback to get data
             }); 
         }
